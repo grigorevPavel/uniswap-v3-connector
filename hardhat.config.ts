@@ -17,6 +17,21 @@ const config: HardhatUserConfig = {
     compilers: [
       {
         version: '0.8.27',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200
+          }
+        }
+      },
+      {
+        version: '0.6.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200
+          }
+        }
       },
     ],
   },
@@ -27,12 +42,6 @@ const config: HardhatUserConfig = {
       forking: {
         url: process.env.RPC_BSC_MAIN || 'NO RPC',
       },
-    },
-    bsc_testnet: {
-      tags: ['localhost'],
-      deploy: ['deploy/localhost/'],
-      url: process.env.RPC_BSC_TEST || 'NO RPC',
-      accounts: process.env.PRIVATE_TEST?.split(',') || [],
     },
   },
   etherscan: {
